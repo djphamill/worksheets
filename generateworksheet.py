@@ -27,6 +27,5 @@ if __name__ == "__main__":
     parser = ArgumentParser(description=description)
     parser.add_argument('OUTPUT_DIR', help="The dircotry in which to store the compiled PDF")
     args = parser.parse_args()
-    OUTPUT_DIR = args.OUTPUT_DIR
 
-    generate_worksheet(OUTPUT_DIR)
+    generate_worksheet(args.OUTPUT_DIR)
