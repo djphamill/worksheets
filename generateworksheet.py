@@ -17,7 +17,7 @@ def generate_worksheet(output_path):
         doc.append('\nAlso some crazy characters: $&#{}')
 
         with doc.create(Subsection('Math that is incorrect')):
-            doc.append(Math(data=['2*3', '=', 9]))
+            doc.append(Math(data=['2*5', '=', 9]))
     
     doc.generate_pdf(output_path, clean_tex=False)
 
