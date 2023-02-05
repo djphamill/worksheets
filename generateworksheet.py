@@ -1,5 +1,4 @@
 from argparse import ArgumentParser
-from pylatex import Document, Section, Subsection, Math
 from pylatex.utils import bold
 
 from worksheet import Worksheet
@@ -12,6 +11,7 @@ def generate_worksheet(output_path):
     doc = Worksheet(output_path)
 
     doc.fill_document()
+    doc.add_question()
     doc.generate_pdf(output_path, clean_tex=False)
 
 

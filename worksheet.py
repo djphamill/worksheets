@@ -1,6 +1,8 @@
 from pylatex import Document, Command, Section, Subsection
 from pylatex.utils import italic, NoEscape
 
+from questions import Questions
+from parts import Parts
 
 class Worksheet(Document):
     """
@@ -23,6 +25,16 @@ class Worksheet(Document):
         self.preamble.append(Command('author', 'Gaps And Posts'))
         self.preamble.append(Command('date', NoEscape(r'\today')))
         self.append(NoEscape(r'\maketitle'))
+
+    def add_question(self):
+        with self.create(Questions()):
+            self.append(Command('question', 'Hello this is a quesiton'))
+            self.add_part()
+
+    
+    def add_part(self):
+        with self.create(Parts()):
+            self.append(Command('part', 'Is this is a part?'))
 
     def fill_document(self):
         """Add a section, a subsection and some text to the document."""
