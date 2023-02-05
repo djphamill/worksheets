@@ -2,23 +2,16 @@ from argparse import ArgumentParser
 from pylatex import Document, Section, Subsection, Math
 from pylatex.utils import bold
 
-GEOMETRY_OPTIONS = dict(tmargin="1cm", lmargin="10cm")
+from worksheet import Worksheet
 
 def generate_worksheet(output_path):
     """
     Build the PDF document
     """
 
-    doc = Document(output_path, geometry_options=GEOMETRY_OPTIONS)
+    doc = Worksheet(output_path)
 
-    with doc.create(Section('The simple stuff')):
-        doc.append('Some regular text and some')
-        doc.append(bold('italic text. '))
-        doc.append('\nAlso some crazy characters: $&#{}')
-
-        with doc.create(Subsection('Math that is incorrect')):
-            doc.append(Math(data=['2*5', '=', 9]))
-    
+    doc.fill_document()
     doc.generate_pdf(output_path, clean_tex=False)
 
 
